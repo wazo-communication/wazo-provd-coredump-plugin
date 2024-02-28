@@ -1,0 +1,32 @@
+#!/bin/sh
+# Copyright 2024 The Wazo Authors  (see the AUTHORS file)
+# SPDX-License-Identifier: GPL-3.0+
+
+case "$1" in
+    build)
+        ;;
+
+    package)
+        mkdir -p ${pkgdir}/etc/systemd/system/wazo-provd.service.d/
+        cp coredump.conf ${pkgdir}/etc/systemd/system/wazo-provd.service.d/coredump.conf
+        ;;
+
+    install)
+	sysctl -w fs.suid_dumpable=1
+        systemctl daemon-reload
+        systemctl restart wazo-provd.service
+        ;;
+
+    uninstall)
+	sysctl -w fs.suid_dumpable=0
+	rm /etc/systemd/system/wazo-provd.service.d/coredump.conf
+	rmdir --ignore-fail-on-non-empty /etc/systemd/system/wazo-provd.service.d
+        systemctl daemon-reload
+        systemctl restart wazo-provd.service
+        ;;
+
+    *)
+        echo "$0 called with unknown argument '$1'" >&2
+        exit 1
+    ;;
+esac

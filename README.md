@@ -9,3 +9,9 @@ wazo-plugind-cli -c "install git https://github.com/wazo-communication/wazo-prov
 ```
 
 Core dumps will be created in `/var/lib/wazo-provd`
+
+## Uninstallation
+
+```sh
+wazo-plugind-cli -c "uninstall wazocommunication/wazo-provd-coredump"
+```

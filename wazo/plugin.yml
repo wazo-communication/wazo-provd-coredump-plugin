@@ -5,6 +5,7 @@ version: 1.0.0
 author: Wazo authors
 display_name: wazo-provd Core Dump
 min_wazo_version: 22.01
+max_wazo_version: 24.01
 tags:
   - wazo-provd
   - debug

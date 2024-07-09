@@ -1,11 +1,10 @@
 
 name: wazo-provd-coredump
 namespace: wazocommunication
-version: 1.0.0
+version: 2.0.0
 author: Wazo authors
 display_name: wazo-provd Core Dump
-min_wazo_version: 22.01
-max_wazo_version: 24.01
+min_wazo_version: 24.02
 tags:
   - wazo-provd
   - debug
